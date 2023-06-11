@@ -1,4 +1,23 @@
 body {
-  background-color: #faf8f1;
+  background-color: #d2f6eeed;
   color: #0a1520;
+}
+.body-container {
+  flex-direction: column;
+  text-align: center;
+
+}
+
+.header {
+  margin-bottom: 40px;
+  
+}
+
+.footer {
+  margin-top: auto;
+  
+}
+.locButton {
+  margin-left: 100px;
+  margin-right: 100px;
 }
