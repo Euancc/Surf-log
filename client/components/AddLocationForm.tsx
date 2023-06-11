@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { LocationData } from "../models/locations";
 
 
 
 interface Props {
-  onAddLocation: (newLocation: string) => void
+  onAddLocation: (newLocation: LocationData) => void
 }
 
 export default function AddLocationForm(props:Props) {
@@ -27,6 +28,7 @@ return (
   <form onSubmit={handleSubmit}>
     <label htmlFor="new-location">New Location:</label>
     <input
+    id="type"
     type="text"
     name="new-Location"
     value={type}
