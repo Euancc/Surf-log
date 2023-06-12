@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import type { Location } from '../models/locations'
+import type { Location } from '../../models/locations'
 
 interface Props {
   locations: Location[]

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { LocationData } from "../models/locations";
+import { LocationData } from "../../models/locations";
 
 
 

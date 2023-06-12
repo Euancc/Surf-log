@@ -2,15 +2,44 @@ import Header from './Header'
 import Footer from './Footer'
 import Locations from './Locations'
 import AddLocationForm from './AddLocationForm'
-import { useState } from 'react'
+import { useState, FormEvent, ChangeEvent, useEffect } from 'react'
 import { v4 as uuid } from 'uuid'
-import { Location, LocationData } from '../models/locations'
+import { Location, LocationData } from '../../models/locations'
+import request from 'superagent'
+import { getLocations } from '../apis/apiClient'
 
+const initialFormData = {
+  location: ' '
+}
 
 
 function App() {
   const [locations, setLocations] = useState<Location[]>([
-    {id: 'magnetBayId', type: 'location' }])
+    {id: ' ',  type: ' ' }])
+    const [form, setForm] = useState(initialFormData)
+
+
+useEffect(() => {
+  async function fetchTalks() {
+    try{
+      const locations = await getLocations()
+      setLocations(locations)
+    } catch(error) {
+      console.log(error)
+    }
+  }
+  fetchTalks()
+}, [])
+
+function handleChange(event: ChangeEvent<HTMLInputElement>) {
+  const { name, value } = event.target
+  const newForm = {...form, [name]: value}
+  setForm(newForm)
+}
+
+
+
+
 
 function hanleAddLocation(location: LocationData) {
   const id = uuid()
@@ -18,12 +47,39 @@ function hanleAddLocation(location: LocationData) {
   setLocations([...locations, newLocation])
 }
 
+
+interface Props {
+  locations: Location[]
+}
+
+ function Locations({locations}: Props) {
+  return (
+    <section>
+      <ul>
+        {locations.map((location) => (
+          <li key={location.id}>
+            <h3>{location.type}</h3>
+          </li>
+        ))}
+        <input
+        id='location'
+        onChange={handleChange}
+        value={form.location}
+        
+        />
+      </ul>
+  
+    </section>
+  )
+}
+
+
   return (
     <div className="body-container">
       <Header />
-      <AddLocationForm onAddLocation={hanleAddLocation} />
+      <AddLocationForm  onAddLocation={hanleAddLocation} />
       <ul>
-        <Locations locations={locations}   />
+        <Locations  locations={locations}   />
       </ul>
       <Footer />
     </div>
