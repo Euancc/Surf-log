@@ -23,6 +23,8 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
  onAddLocation(location)
 }
 
+
+
 return (
   <>
   <form onSubmit={handleSubmit}>
