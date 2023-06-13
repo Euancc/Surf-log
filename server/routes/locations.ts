@@ -5,7 +5,9 @@ import { NewLocation } from '../../models/locations'
 
 const router = express.Router()
 
-router.get('/locations', async (req, res) => {
+
+// GET /api/vi/locations
+router.get('/', async (req, res) => {
   try{
     const locations = await getLocations()
     res.json({ locations })
@@ -16,7 +18,8 @@ router.get('/locations', async (req, res) => {
   }
 })
 
-router.post('/locations', async (req, res) => {
+// POST /api/vi/locations
+router.post('/', async (req, res) => {
   try{
     const newLocation = req.body.newLocation as NewLocation
     if(!newLocation) {

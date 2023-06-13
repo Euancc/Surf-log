@@ -15,7 +15,7 @@ const initialFormData = {
 
 function App() {
   const [locations, setLocations] = useState<Location[]>([
-    {id: ' ',  type: ' ' }])
+    {id: ' ',  location: ' ' }])
     const [form, setForm] = useState(initialFormData)
 
 
@@ -31,26 +31,12 @@ useEffect(() => {
   fetchTalks()
 }, [])
 
-function handleChange(event: ChangeEvent<HTMLInputElement>) {
-  const { name, value } = event.target
-  const newForm = {...form, [name]: value}
-  setForm(newForm)
-}
 
-
-
-
-
-function hanleAddLocation(location: LocationData) {
-  const id = uuid()
-  const newLocation = { ...location, id} 
-  setLocations([...locations, newLocation])
-}
 
   return (
     <div className="body-container">
       <Header />
-      <AddLocationForm  onAddLocation={hanleAddLocation} />
+      <AddLocationForm  />
       <ul>
         <Locations  locations={locations}   />
       </ul>

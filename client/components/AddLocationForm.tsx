@@ -1,40 +1,61 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { LocationData } from "../../models/locations";
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { addLocation } from "../apis/apiClient";
 
 
 
-interface Props {
-  onAddLocation: (newLocation: LocationData) => void
+
+
+const initialFormData = {
+  location: ' ',
 }
 
-export default function AddLocationForm(props:Props) {
-const {onAddLocation} = props
+interface formData {
+  location: string
+}
 
-  const [type, setType] = useState(' ')
+export default function AddLocationForm() {
+
+const [form, setForm] = useState<formData>(initialFormData)
+
+const queryClient = useQueryClient()
+
+const [type, setType] = useState(' ')
 
 
-// function handlechange(event: React.ChangeEvent<HTMLInputElement>) {
-//   setText(event.target.value)
-// }
+ const addLocationMutation = useMutation(addLocation, {
+  onSuccess: async () => {
+    queryClient.invalidateQueries(['locations'])
+  }
+ })
+
+
 
 function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
   event.preventDefault()
-  const location = {type}
- onAddLocation(location)
+  console.log('form', form) // error not found in App.tsx
+  addLocationMutation.mutate(form)
+  setForm(initialFormData)
+
 }
 
-
+function handleChange(event: ChangeEvent<HTMLInputElement>) {
+  const { name, value } = event.target
+  const newForm = {...form, [name]: value}
+  setForm(newForm)
+}
 
 return (
   <>
   <form onSubmit={handleSubmit}>
-    <label htmlFor="new-location">New Location:</label>
+    <label htmlFor="location">New Location:</label>
     <input
     id="type"
     type="text"
-    name="new-Location"
-    value={type}
-    onChange={(e) => setType(e.target.value)}
+    name="location"
+    value={form.location}
+    onChange={handleChange}
     />
     <button>Submit</button>
     </form>

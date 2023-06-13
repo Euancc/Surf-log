@@ -10,5 +10,5 @@ export async function addLocation(
   location: NewLocation,
   db = connection
 ): Promise<NewLocation[]> {
-  return await db<NewLocation>('location').insert(location).returning('*')
+  return await db<NewLocation>('locations').insert(location).returning('*')
 }

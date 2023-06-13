@@ -1,13 +1,13 @@
 export interface LocationData {
   type: string 
+  location: string
  }
 
 export interface Location {
    id: string
-   type: string
+   location: string
  }
 
  export interface NewLocation {
-  id: string
-  type: string
+  location: string
  }

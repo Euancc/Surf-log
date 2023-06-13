@@ -6,12 +6,14 @@ interface Props {
 }
 
 export default function Locations({locations}: Props) {
+  console.log('locations', locations)
+  // [ { id: 1, location: 'test' }]
   return (
     <section>
       <ul>
         {locations.map((location) => (
           <li key={location.id}>
-            <h3>{location.type}</h3>
+            <h3>{location.location}</h3>
           </li>
         ))}
       </ul>
