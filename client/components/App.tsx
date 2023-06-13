@@ -14,6 +14,7 @@ const initialFormData = {
 
 
 function App() {
+  // change to QueryClient
   const [locations, setLocations] = useState<Location[]>([
     {id: ' ',  location: ' ' }])
     const [form, setForm] = useState(initialFormData)
