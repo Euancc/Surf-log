@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
-import { LocationData } from "../../models/locations";
+
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { addLocation } from "../apis/apiClient";
 
@@ -21,8 +21,6 @@ const [form, setForm] = useState<formData>(initialFormData)
 
 const queryClient = useQueryClient()
 
-const [type, setType] = useState(' ')
-
 
  const addLocationMutation = useMutation(addLocation, {
   onSuccess: async () => {
@@ -31,6 +29,11 @@ const [type, setType] = useState(' ')
  })
 
 
+ function handleChange(event: ChangeEvent<HTMLInputElement>) {
+  const { name, value } = event.target
+  const newForm = {...form, [name]: value}
+  setForm(newForm)
+}
 
 function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
   event.preventDefault()
@@ -40,11 +43,7 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 
 }
 
-function handleChange(event: ChangeEvent<HTMLInputElement>) {
-  const { name, value } = event.target
-  const newForm = {...form, [name]: value}
-  setForm(newForm)
-}
+
 
 return (
   <>

@@ -1,5 +1,5 @@
 import express from 'express'
-
+import * as db from '../db/db'
 import {addLocation, getLocations} from '../db/db'
 import { NewLocation } from '../../models/locations'
 
@@ -32,6 +32,17 @@ router.post('/', async (req, res) => {
     console.error(error)
     res.sendStatus(500)
   }
+})
+
+router.patch('/', async (req, res) => {
+  const id = parseInt(req.params.id)
+  if (isNaN(id)) {
+    res.status(400).send('Bad Request: ID must be a number')
+    return
+  }
+  const name = req.body.name
+  await db.renameLocation(id, name)
+  res.sendStatus(200)
 })
 
 export default router
