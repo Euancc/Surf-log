@@ -1,7 +1,8 @@
 import express from 'express'
 import * as db from '../db/db'
-import {addLocation, getLocations} from '../db/db'
+import {addLocation, getLocations, deleteLocation} from '../db/db'
 import { NewLocation } from '../../models/locations'
+import { log } from 'console'
 
 const router = express.Router()
 
@@ -34,7 +35,7 @@ router.post('/', async (req, res) => {
   }
 })
 
-router.patch('/', async (req, res) => {
+router.patch('/:id', async (req, res) => {
   const id = parseInt(req.params.id)
   if (isNaN(id)) {
     res.status(400).send('Bad Request: ID must be a number')
@@ -43,6 +44,23 @@ router.patch('/', async (req, res) => {
   const name = req.body.name
   await db.renameLocation(id, name)
   res.sendStatus(200)
+})
+
+router.delete('/:id', async (req, res) => {
+  const id = parseInt(req.params.id)
+  if (isNaN(id)) {
+    res.status(400).send('ID must be a number')
+    return
+  }
+
+  try {
+   await db.deleteLocation(id)
+  res.sendStatus(200)
+  } catch (error) {
+    console.log(error)
+    res.status(500).send('could not delete location')
+    
+  }
 })
 
 export default router

@@ -19,5 +19,5 @@ export interface Location {
 
  export interface RenameLocation {
   id: Location['id']
-  newName: Location['name']
+  newName: Location['location']
  }

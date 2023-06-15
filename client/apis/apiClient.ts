@@ -9,8 +9,8 @@ export async function getLocations(): Promise<Location[]> {
   return response.body.locations
 }
 
-export async function addLocation(newLocation: NewLocation): Promise<Location> {
-  const response = await request.post('/api/vi/locations').send({newLocation: newLocation})
+export async function addLocation(location: NewLocation): Promise<Location> {
+  const response = await request.post('/api/vi/locations').send({newLocation: location})
   return response.body.location
 }
 
@@ -20,5 +20,5 @@ export async function deleteLocation({ id }: DelLocation): Promise<void> {
 }
 
 export async function  renameLocation ({id, newName}: RenameLocation): Promise<void> {
-  await request.patch(`/api/vi/locations/${id}`).send({name: newName})
+  await request.patch(`/api/vi/locations/${id}`).send({location: newName})
 }

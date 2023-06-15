@@ -6,26 +6,26 @@ import { query } from 'express'
 
 interface Props {
   id: number
-  name: string
+  locationName: string
 }
 
-export default function LocationsListItem({id, name}: Props) {
+export default function LocationsListItem({id, locationName: location}: Props) {
   const [editing, setEditing] = useState(false)
 
-  const [text, setText] = useState(name)
+  const [text, setText] = useState(location)
 
   const queryClient = useQueryClient()
 
   const delLocationMutation = useMutation(deleteLocation, {
     onSuccess: async () => {
-      queryClient.invalidateQueries(['location'])
+      queryClient.invalidateQueries(['locations'])
     }
   })
 
 
 const editLocationMutation = useMutation(renameLocation, {
   onSuccess: async () => {
-    queryClient.invalidateQueries(['location'])
+    queryClient.invalidateQueries(['locations'])
   }
 })
 
@@ -43,11 +43,11 @@ const handleEditSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 }
 const handleStopEditingClick = () => {
   setEditing(false)
-  setText(name)
+  setText(location)
 }
 
 const handleStartEditingClick = () => {
-  setEditing(false)
+  setEditing(true)
 }
 
 return (
@@ -60,14 +60,15 @@ return (
            onChange={(e) => setText(e.target.value)}
            />
         <button type='submit'>Save</button> 
-        <button type='button' onClick={handleStopEditingClick}></button>
+        <button type='button' onClick={handleStopEditingClick}>Stop editing</button>
+        
       </form>
 ) : (
-  <p>
-    {id} - {name} -{' '}
+  <p className='locationName'>
+    ~ {location} ~ {' '}
     <span>
       <button onClick={handleStartEditingClick}>Rename</button>
-      <button onClick={handleDelClick}>Delet</button>
+      <button onClick={handleDelClick}>Delete</button>
     </span>
   </p>
 )}
