@@ -13,7 +13,7 @@ export const routes = createRoutesFromElements(
 
   <Route path="/">
       
-    <Route path="/Tablepage/:locationName" element={<TablePage />} />
+    <Route path="/tablepage/:location" element={<TablePage />} />
     <Route path="/" element={<App />} />
   
     

@@ -68,7 +68,7 @@ return (
       </form>
 ) : (
   <p className='locationName'>
-     {location}  ~ {' '}
+     ~ <Link to={`/tablePage/${location}`}>{location}</Link> ~ {' '}
     <span>
       <button onClick={handleStartEditingClick}>Rename</button>
       <button onClick={handleDelClick}>Delete</button>
