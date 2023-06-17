@@ -22,3 +22,5 @@ export async function deleteLocation({ id }: DelLocation): Promise<void> {
 export async function  renameLocation ({id, newName}: RenameLocation): Promise<void> {
   await request.patch(`/api/vi/locations/${id}`).send({location: newName})
 }
+
+

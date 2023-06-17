@@ -14,13 +14,17 @@ export async function addLocation(
 }
 
 export async function renameLocation(
-  id: number, name: string
+  id: number, location: string
 ): Promise<Location | undefined> {
-  return db('locations').where({id}).update({ name }).returning(['id', 'name'])
+  return db('locations').where({id}).update({ location }).returning(['id', 'location'])
 }
 
 export async function deleteLocation (
   id: number
 ): Promise<void> {
   await db('locations').where({ id }).delete()
+}
+
+export function TablePage() {
+  throw new Error('Function not implemented.');
 }

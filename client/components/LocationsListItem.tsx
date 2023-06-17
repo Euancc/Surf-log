@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query'
 import { deleteLocation, renameLocation } from '../apis/apiClient'
 import { query } from 'express'
+import { Link } from 'react-router-dom'
 
 
 interface Props {
@@ -11,6 +12,8 @@ interface Props {
 
 export default function LocationsListItem({id, locationName: location}: Props) {
   const [editing, setEditing] = useState(false)
+
+ 
 
   const [text, setText] = useState(location)
 
@@ -65,7 +68,7 @@ return (
       </form>
 ) : (
   <p className='locationName'>
-    ~ {location} ~ {' '}
+     {location}  ~ {' '}
     <span>
       <button onClick={handleStartEditingClick}>Rename</button>
       <button onClick={handleDelClick}>Delete</button>
@@ -77,3 +80,5 @@ return (
 )
 
 }
+
+//  ~ <Link to={`/TablePage/${location}`}> {location} </Link> ~ {' '}

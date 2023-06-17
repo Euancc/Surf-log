@@ -48,7 +48,7 @@ function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 return (
   <>
   <form onSubmit={handleSubmit}>
-    <label htmlFor="location">New Location:</label>
+    <label htmlFor="location">New Location: </label>
     <input
     id="type"
     type="text"
@@ -56,7 +56,7 @@ return (
     value={form.location}
     onChange={handleChange}
     />
-    <button>Submit</button>
+    <button>Add</button>
     </form>
   </>
 )

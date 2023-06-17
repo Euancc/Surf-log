@@ -41,8 +41,8 @@ router.patch('/:id', async (req, res) => {
     res.status(400).send('Bad Request: ID must be a number')
     return
   }
-  const name = req.body.name
-  await db.renameLocation(id, name)
+  const location = req.body.location
+  await db.renameLocation(id, location)
   res.sendStatus(200)
 })
 
@@ -60,6 +60,19 @@ router.delete('/:id', async (req, res) => {
     console.log(error)
     res.status(500).send('could not delete location')
     
+  }
+})
+
+router.get('/Tablepage/:location', async (req, res) => {
+  const location = parseInt(req.params.location)
+  try {
+
+     await db.TablePage()
+
+    
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'Something went wrong' })
   }
 })
 

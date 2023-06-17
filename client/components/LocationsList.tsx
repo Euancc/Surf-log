@@ -24,7 +24,16 @@ export default function Locations() {
       <ul>
         
         {locations.map((locations) => (
-          <LocationsListItem key={locations.id} id={locations.id} locationName={locations.location} />
+          <LocationsListItem 
+            key={locations.id} 
+            id={locations.id} 
+            locationName={locations.location} 
+
+          />
+          
+      
+         
+          
           
         ))}
       </ul>
@@ -32,3 +41,4 @@ export default function Locations() {
     </section>
   )
 }
+{/* <Link to={`/TablePage/${location}`}> */}
