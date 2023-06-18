@@ -1,7 +1,6 @@
-import { Link } from 'react-router-dom'
-import type { Location } from '../../models/locations'
+
 import LocationsListItem from './LocationsListItem'
-import AddLocationForm from './AddLocationForm'
+
 import { useQuery } from '@tanstack/react-query'
 import { getLocations } from '../apis/apiClient'
 

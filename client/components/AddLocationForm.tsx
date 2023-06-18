@@ -50,9 +50,11 @@ return (
   <form onSubmit={handleSubmit}>
     <label htmlFor="location">New Location: </label>
     <input
+    
     id="type"
     type="text"
     name="location"
+    autoComplete="off"
     value={form.location}
     onChange={handleChange}
     />

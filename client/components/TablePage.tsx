@@ -12,7 +12,10 @@ export default function TablePage() {
 
   <div className="body-container">
       <Header />
-   
+   <div>
+   <img className="card" src='/Images/PopulatedCard.png' alt='Empty Card' ></img>
+    <img className="card" src='/Images/EmptyCard.png' alt='Empty Card' ></img>
+   </div>
       <Footer />
     </div>
   )
