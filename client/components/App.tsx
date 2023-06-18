@@ -5,20 +5,10 @@ import AddLocationForm from './AddLocationForm'
 import { getLocations } from '../apis/apiClient'
 import { useQuery } from '@tanstack/react-query'
 
-
-
-
-
-
 function App() {
 
-
-
- const {data: locationDetailsQuery, isError, isLoading} = useQuery(['locations'], getLocations )
-
- 
+const {data: locationDetailsQuery, isError, isLoading} = useQuery(['locations'], getLocations )
 console.log(locationDetailsQuery);
-
 
 if (isError) {
   return <div>There was an error</div>
@@ -31,9 +21,7 @@ if (isLoading) {
     <div className="body-container">
       <Header />
       <AddLocationForm />
-      
-     <Locations />
-      
+      <Locations />
       <Footer />
     </div>
   )

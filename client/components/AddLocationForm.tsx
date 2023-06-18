@@ -1,11 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
-
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { addLocation } from "../apis/apiClient";
-
-
-
-
 
 const initialFormData = {
   location: ' ',

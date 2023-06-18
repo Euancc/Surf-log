@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import {  useMutation, useQueryClient } from '@tanstack/react-query'
 import { deleteLocation, renameLocation } from '../apis/apiClient'
-
 import { Link } from 'react-router-dom'
 
 
@@ -64,7 +63,6 @@ return (
            />
         <button type='submit'>Save</button> 
         <button type='button' onClick={handleStopEditingClick}>Stop editing</button>
-        
       </form>
 ) : (
   <h2 className='locationName'>
@@ -75,7 +73,6 @@ return (
     </span>
   </h2>
 )}
-
 </div>
 )
 

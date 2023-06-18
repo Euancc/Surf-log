@@ -1,6 +1,5 @@
 
 import LocationsListItem from './LocationsListItem'
-
 import { useQuery } from '@tanstack/react-query'
 import { getLocations } from '../apis/apiClient'
 
@@ -9,7 +8,6 @@ import { getLocations } from '../apis/apiClient'
 export default function Locations() {
   const {data: locations, isError, isLoading} = useQuery(['locations'], getLocations)
   console.log('locations', locations)
-
 
   if (isError) {
     return <div>There was an error</div>
@@ -26,17 +24,10 @@ export default function Locations() {
           <LocationsListItem 
             key={locations.id} 
             id={locations.id} 
-            locationName={locations.location} 
-
-          />
-          
-      
-         
-          
-          
+            locationName={locations.location}
+          /> 
         ))}
       </ul>
-  
     </section>
   )
 }
