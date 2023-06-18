@@ -12,9 +12,9 @@ server.use(express.static(join(__dirname, './public')))
 server.use('/api/vi/locations', locationRoutes)
 
 if (process.env.NODE_ENV === 'production') {
-  server.use('/assets', express.static(resolve(__dirname, '../assets')))
+  server.use('/assets', express.static(resolve(__dirname, '../../assets')))
   server.get('*', (req, res) => {
-    res.sendFile(resolve(__dirname, '../index.html'))
+    res.sendFile(resolve(__dirname, '../../index.html'))
   })
 }
 export default server
