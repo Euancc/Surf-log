@@ -1,8 +1,8 @@
 import express from 'express'
 import * as db from '../db/db'
-import {addLocation, getLocations, deleteLocation} from '../db/db'
+import {addLocation, getLocations, } from '../db/db'
 import { NewLocation } from '../../models/locations'
-import { log } from 'console'
+
 
 const router = express.Router()
 
@@ -63,17 +63,17 @@ router.delete('/:id', async (req, res) => {
   }
 })
 
-router.get('/Tablepage/:location', async (req, res) => {
-  const location = parseInt(req.params.location)
-  try {
+// router.get('/Tablepage/:location', async (req, res) => {
+//   const location = parseInt(req.params.location)
+//   try {
 
-     await db.TablePage()
+//      await db.TablePage()
 
     
-  } catch (error) {
-    console.log(error)
-    res.status(500).json({ message: 'Something went wrong' })
-  }
-})
+//   } catch (error) {
+//     console.log(error)
+//     res.status(500).json({ message: 'Something went wrong' })
+//   }
+// })
 
 export default router

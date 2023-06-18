@@ -51,7 +51,7 @@ return (
     <label htmlFor="location">New Location: </label>
     <input
     
-    id="type"
+    id="location"
     type="text"
     name="location"
     autoComplete="off"

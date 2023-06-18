@@ -1,6 +1,6 @@
 import  db from "./connection";
 
-import { Location, LocationData, NewLocation } from '../../models/locations'
+import { Location, NewLocation } from '../../models/locations'
 
 export async function getLocations(): Promise <Location[]> {
   return await db<Location>('locations').select()

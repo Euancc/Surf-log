@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query'
+import {  useMutation, useQueryClient } from '@tanstack/react-query'
 import { deleteLocation, renameLocation } from '../apis/apiClient'
-import { query } from 'express'
+
 import { Link } from 'react-router-dom'
 
 
@@ -67,13 +67,13 @@ return (
         
       </form>
 ) : (
-  <p className='locationName'>
+  <h2 className='locationName'>
      ~ <Link to={`/tablePage/${location}`}>{location}</Link> ~ {' '}
     <span>
       <button onClick={handleStartEditingClick}>Rename</button>
       <button onClick={handleDelClick}>Delete</button>
     </span>
-  </p>
+  </h2>
 )}
 
 </div>

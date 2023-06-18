@@ -1,4 +1,4 @@
-const { table } = require("console")
+
 
 exports.up = function (knex) {
   return knex.schema.createTable('locations', table => {
