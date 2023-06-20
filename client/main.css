@@ -36,14 +36,30 @@ color: black;
 }
 
 .card {
-  margin-top: 100px;
-  margin-bottom: 100px;
-  margin-left: 100px;
-  margin-right: 100px;
+  display:flex;
+flex-direction:column;
+  margin: 0 auto;    
+  min-width: 400px;
+  width: 50vw;
+  max-width: 550px;
+  /* Form outline */
+  padding: 1em;
+  border: 2px solid #000204;
+  border-radius: 2em;
+  background-color:rgb(214, 232, 247);
+  
 }
 a {
   color: black
 }
 a:hover {
    color: #00F
+}
+
+.locHead {
+  font-size: xx-large;
+color: black;
+  text-align: center;
+  margin-bottom: 40px;
+
 }
