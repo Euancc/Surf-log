@@ -1,7 +1,7 @@
 export default function Header() {
   return (
-    <div className="header">
+    <header className="header">
       <h1>Surf log</h1>
-    </div>
+    </header>
   )
 }

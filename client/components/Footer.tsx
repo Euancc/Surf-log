@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <div className="footer">
+    <footer className="footer">
       <h1>Seeya</h1>
-    </div>
+    </footer>
   )
 }
